@@ -99,44 +99,66 @@
       filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
     }
 
-    /* Amplop & surat */
+    /* Amplop */
     .envelope {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) scale(0);
       width: 320px;
-      background: #fff;
+      height: 220px;
+      background: #fffef8;
       border-radius: 10px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-      text-align: center;
-      padding: 30px 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
       transition: transform .6s ease;
     }
     .envelope.show { transform: translate(-50%, -50%) scale(1); }
-    .envelope .heart-btn {
-      font-size: 34px;
-      color: var(--love);
-      cursor: pointer;
-      margin-bottom: 12px;
+    .envelope .flap {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 100px;
+      background: #fffcea;
+      clip-path: polygon(0 0, 50% 100%, 100% 0);
+      transition: transform .6s ease;
+      transform-origin: top;
     }
+    .envelope.open .flap {
+      transform: rotateX(180deg);
+    }
+    .heart-btn {
+      font-size: 36px;
+      color: var(--love);
+      z-index: 2;
+    }
+
+    /* Surat */
     .letter {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 400px;
       background: var(--paper);
       border-radius: 10px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      opacity: 0;
+      transition: all .6s ease;
       padding: 18px;
       text-align: justify;
       line-height: 1.5em;
       font-size: 14px;
       max-height: 300px;
       overflow-y: auto;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all .6s ease;
     }
     .envelope.open .letter {
+      top: -120px;
       opacity: 1;
-      transform: translateY(0);
     }
 
     footer {
@@ -161,7 +183,7 @@
 
     @media (max-width: 480px) {
       .letter { font-size: 12px; padding: 12px; max-height: 210px; }
-      .envelope { width: 90%; padding: 20px 10px; }
+      .envelope { width: 90%; height: 200px; }
       .stage { padding-bottom: 70px; }
     }
   </style>
@@ -181,7 +203,9 @@
       </div>
     </div>
 
+    <!-- Amplop -->
     <div class="envelope" id="envelope">
+      <div class="flap"></div>
       <div class="heart-btn" id="openBtn">❤</div>
       <div class="letter" id="letter">
         <h3>✨ FROM OCHA RIZKI ✨</h3>
