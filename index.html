@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Romantic Mini-Game — Surat Kejutan</title>
+  <title>Mini-Game DART — Surat Kejutan</title>
   <style>
     :root {
-      --bg: #ffff;
-      --accent: #c8e6c5;
-      --accent-2: #ffd9e8;
-      --paper: #fffbea;
-      --love: #a21111;
+      --bg: #ffffff;
+      --accent: #102f76; /* navy */
+      --accent-2: #d9d9d9; /* abu */
+      --paper: #f5f5f5; /* putih keabu */
+      --love: #102f76; /* navy sebagai warna utama */
     }
     html, body {
       height: 100%;
@@ -18,7 +18,7 @@
       font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     }
     body {
-      background: linear-gradient(180deg, #ffff 0%, #c8e6c5 35%, #ffd9e8 70%, #f6f6f6 100%);
+      background: linear-gradient(180deg, var(--bg) 0%, var(--accent-2) 40%, var(--accent) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -28,7 +28,7 @@
       width: 100%;
       max-width: 900px;
       height: 640px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(200,230,197,0.7));
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(16,47,118,0.1));
       box-shadow: 0 12px 30px rgba(0,0,0,0.12);
       border-radius: 18px;
       position: relative;
@@ -40,8 +40,8 @@
       align-items: center;
       justify-content: space-between;
     }
-    h1 { font-size: 18px; margin: 0; color: #4a4a4a; }
-    .help { font-size: 13px; color: #555; }
+    h1 { font-size: 18px; margin: 0; color: #142a46; }
+    .help { font-size: 13px; color: #333; }
     .game-area {
       position: absolute;
       inset: 70px 20px 120px 20px;
@@ -74,7 +74,7 @@
       width: 12px; height: 12px;
       border-radius: 50%; background: var(--accent);
     }
-    .timer { font-weight: 600; color: #333; }
+    .timer { font-weight: 600; color: #142a46; }
     .heart {
       position: absolute;
       width: 52px; height: 52px;
@@ -95,9 +95,9 @@
       position: absolute;
       top: 50%; left: 50%;
       transform: translate(-50%, -50%) scale(0);
-      width: 340px;   /* lebih besar */
+      width: 340px;
       height: 220px;
-      background: #fffef8; /* putih */
+      background: #ffffff;
       border-radius: 10px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
       cursor: pointer;
@@ -112,7 +112,7 @@
       position: absolute;
       top: -1px; left: 0; right: 0;
       height: 90px;
-      background: #fffcea; 
+      background: var(--accent-2);
       clip-path: polygon(0 0, 50% 100%, 100% 0);
     }
     .envelope .heart-btn {
@@ -123,7 +123,7 @@
     }
     .letter {
       position: absolute;
-      width: 420px;  /* lebih besar */
+      width: 420px;
       max-height: 70vh;
       background: var(--paper);
       top: 100%; left: 50%;
@@ -146,8 +146,8 @@
       animation: glow 1.2s infinite alternate;
     }
     @keyframes glow {
-      from { box-shadow: 0 0 10px rgba(255,255,0,0.5); }
-      to { box-shadow: 0 0 25px rgba(255,255,0,1); }
+      from { box-shadow: 0 0 10px rgba(16,47,118,0.4); }
+      to { box-shadow: 0 0 25px rgba(16,47,118,0.8); }
     }
 
     footer {
@@ -155,13 +155,13 @@
       padding: 12px 18px; display: flex;
       align-items: center; justify-content: space-between;
     }
-    .instruction { font-size: 13px; color: #333; }
+    .instruction { font-size: 13px; color: #142a46; }
   </style>
 </head>
 <body>
   <div class="stage">
     <header>
-      <h1>Mini Game For Ara</h1>
+      <h1>Mini Game For DART</h1>
       <span class="help">Kumpulkan hati untuk membuka surat</span>
     </header>
     <div class="game-area">
@@ -181,7 +181,7 @@
           tapi tetap kompak. Rasanya capeknya jadi ringan karena ada kalian yang selalu ngehibur, nyemangatin, 
           dan nemenin di setiap rangkaian acara. Ingat ya, ini bukan cuma sekadar acara, tapi juga proses kita buat 
           tumbuh bareng. Kadang capek, kadang males, tapi nanti bakal kerasa sendiri gimana momen ini jadi kenangan berharga 
-          pas udah lewat hehe. adi yuk, terusin semangatnya, tetap solid, dan jalanin semuanya bareng-bareng 
+          pas udah lewat hehe. Jadi yuk, terusin semangatnya, tetap solid, dan jalanin semuanya bareng-bareng 
           dengan hati yang ikhlas dan happy! ✨
         </p>
         <p>
