@@ -283,9 +283,9 @@
       <div class="lid"></div>
       <div class="open-btn" id="openBtn">🐚</div>
 
-      <!-- gambar: file kamu -->
-      <img class="mascot left" src="sponge.png" alt="Sponge">
-      <img class="mascot right" src="patrick.png" alt="Patrick">
+      <!-- gambar: fallback otomatis kalau beda nama/path -->
+      <img class="mascot left" id="spongeImg" src="sponge.png" alt="Sponge">
+      <img class="mascot right" id="patrickImg" src="patrick.png" alt="Patrick">
 
       <div class="letter" id="letter">
         <h3>🧽⭐ FROM AKU ⭐🧽</h3>
@@ -357,6 +357,39 @@
         location.reload();
       }
     }
+
+    // ✅ Fallback loader (cuma buat gambar, ga ngubah logika game)
+    function setImageWithFallback(imgEl, candidates){
+      let i = 0;
+      const tryNext = () => {
+        if(i >= candidates.length) return;
+        imgEl.src = candidates[i++];
+      };
+      imgEl.addEventListener('error', tryNext);
+      // kalau src pertama error, bakal otomatis ganti ke kandidat berikutnya
+      tryNext();
+    }
+
+    const spongeImg = document.getElementById('spongeImg');
+    const patrickImg = document.getElementById('patrickImg');
+
+    setImageWithFallback(spongeImg, [
+      'sponge.png',
+      'Sponge.png',
+      'sponge.PNG',
+      'Sponge.PNG',
+      'assets/sponge.png',
+      'assets/Sponge.png'
+    ]);
+
+    setImageWithFallback(patrickImg, [
+      'patrick.png',
+      'Patrick.png',
+      'patrick.PNG',
+      'Patrick.PNG',
+      'assets/patrick.png',
+      'assets/Patrick.png'
+    ]);
 
     startGame();
   </script>
