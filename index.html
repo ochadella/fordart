@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="id">
 <head>
@@ -220,21 +221,25 @@
       color:transparent;
     }
 
-    /* ===== MASCOTS (muncul di samping surat) ===== */
+    /* ===== MASCOTS (muncul di samping amplop & agak bawah, lebih gede) ===== */
     .mascot{
       position:absolute;
-      top:-105px;
-      width:90px;
+      /* lebih bawah dari sebelumnya biar sejajar sama amplop */
+      top:-30px;
+      /* gedein dikit */
+      width:140px;
       height:auto;
+
       opacity:0;
       transform:translateY(10px) scale(.98);
       transition:.6s ease;
-      z-index:2;
+      z-index:4;
       pointer-events:none;
       filter: drop-shadow(0 14px 22px rgba(0,0,0,.22));
     }
-    .mascot.left{ left:-70px; }
-    .mascot.right{ right:-70px; }
+    /* nempel samping amplop (bukan jauh di luar) */
+    .mascot.left{ left:-120px; }
+    .mascot.right{ right:-120px; }
 
     .clam.open .mascot{
       opacity:1;
@@ -257,8 +262,10 @@
       .letter{font-size:12px;}
       header h1{font-size:15px;}
 
-      .mascot.left{ left:-30px; width:70px; }
-      .mascot.right{ right:-30px; width:70px; }
+      /* versi HP: tetap lebih gede dari sebelumnya tapi aman */
+      .mascot{ top:-10px; width:95px; }
+      .mascot.left{ left:-70px; }
+      .mascot.right{ right:-70px; }
     }
   </style>
 </head>
