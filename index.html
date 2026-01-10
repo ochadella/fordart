@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mini Game For DART</title>
+  <title>Mini Game For babu</title>
   <style>
     :root {
       --bg: #ffffff;
       --accent: #102f76;
       --accent-2: #f9a01b;
       --paper: #fefefe;
-      --love: #d62828;
+      --choco: #5b3a29; /* warna coklat */
     }
     html, body {
       height: 100%;
@@ -83,7 +83,9 @@
       border-radius: 50%;
       background: var(--accent);
     }
-    .heart {
+
+    /* COKLAT (pengganti heart) */
+    .choco {
       position: absolute;
       width: 50px;
       height: 50px;
@@ -91,12 +93,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      user-select: none;
+      transform: translateZ(0);
     }
-    .heart svg {
-      width: 100%;
-      height: 100%;
-      fill: var(--love);
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+    .choco span {
+      font-size: 40px;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.18));
+      transform: rotate(-8deg);
+    }
+    .choco:active span {
+      transform: rotate(-8deg) scale(0.92);
     }
 
     /* Amplop */
@@ -132,7 +138,7 @@
     }
     .heart-btn {
       font-size: 36px;
-      color: var(--love);
+      color: var(--choco);
       z-index: 2;
     }
 
@@ -191,8 +197,8 @@
 <body>
   <div class="stage">
     <header>
-      <h1>Mini Game For DART</h1>
-      <span class="help">Kumpulkan hati untuk membuka surat</span>
+      <h1>Mini Game For Babu</h1>
+      <span class="help">Kumpulkan coklat untuk membuka surat</span>
     </header>
 
     <div class="game-area">
@@ -206,17 +212,17 @@
     <!-- Amplop -->
     <div class="envelope" id="envelope">
       <div class="flap"></div>
-      <div class="heart-btn" id="openBtn">❤</div>
+      <div class="heart-btn" id="openBtn">🍫</div>
       <div class="letter" id="letter">
-        <h3>✨ FROM OCHA RIZKI ✨</h3>
-        <p>Mau bilang makasih banyak buat kalian semua yang udah bareng-bareng jalanin Inisialisasi 2025 sejauh ini. Kalian keren banget, selalu semangat, saling support, dan bisa bikin suasana jadi rame tapi tetap kompak. Rasanya capeknya jadi ringan karena ada kalian yang selalu ngehibur, nyemangatin, dan nemenin di setiap rangkaian acara.</p>
-        <p>Ingat ya, ini bukan cuma sekadar acara, tapi juga proses kita buat tumbuh bareng. Kadang capek, kadang males, tapi nanti bakal kerasa sendiri gimana momen ini jadi kenangan berharga pas udah lewat. Jadi yuk, terusin semangatnya, tetap solid, dan jalanin semuanya bareng-bareng dengan hati yang ikhlas dan happy! ✨</p>
-        <p>Aku bangga banget sama kalian semua, serius. Kalau ada yang mulai down atau ngerasa berat, inget aja kalau DART itu nggak pernah ninggalin satu sama lain. Kita mulai bareng, kita selesain bareng 💪🔥</p>
+        <h3>✨ FROM AKU ✨</h3>
+        <p>Semangat Babuu, Babu tidaks sendirian ougheeeyyyy, Sumpa bu awm lek badmood ketoro bngt dan medeni</p>
+        <p>HIIII NGERYYYYYYYY</p>
+        <p>GO BABU GO BABU GO BABU GOOOOOO SEMANGATTT, SEMANGATTT</p>
       </div>
     </div>
 
     <footer>
-      Klik hati yang muncul sebelum waktunya habis!
+      Klik coklat yang muncul sebelum waktunya habis!
     </footer>
   </div>
 
@@ -234,28 +240,31 @@
     let timeLeft = 25;
     let gameInterval, timerInterval;
 
-    function spawnHeart() {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.innerHTML = `<svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.13 2.44h.74C14.09 5.01 15.76 4 17.5 4 20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
-      heart.style.left = Math.random() * (playground.clientWidth - 50) + 'px';
-      heart.style.top = Math.random() * (playground.clientHeight - 50) + 'px';
-      heart.onclick = () => {
+    function spawnChoco() {
+      const choco = document.createElement('div');
+      choco.className = 'choco';
+      choco.innerHTML = `<span aria-label="coklat">🍫</span>`;
+
+      choco.style.left = Math.random() * (playground.clientWidth - 50) + 'px';
+      choco.style.top  = Math.random() * (playground.clientHeight - 50) + 'px';
+
+      choco.onclick = () => {
         score++;
         scoreEl.textContent = score;
-        heart.remove();
-        if(score >= 10) endGame();
+        choco.remove();
+        if (score >= 10) endGame();
       };
-      playground.appendChild(heart);
-      setTimeout(()=>heart.remove(), 1500);
+
+      playground.appendChild(choco);
+      setTimeout(() => choco.remove(), 1500);
     }
 
     function startGame() {
-      gameInterval = setInterval(spawnHeart, 800);
+      gameInterval = setInterval(spawnChoco, 800);
       timerInterval = setInterval(() => {
         timeLeft--;
         timerEl.textContent = timeLeft;
-        if(timeLeft <= 0) endGame();
+        if (timeLeft <= 0) endGame();
       }, 1000);
     }
 
@@ -263,7 +272,8 @@
       clearInterval(gameInterval);
       clearInterval(timerInterval);
       playground.innerHTML = '';
-      if(score >= 10) {
+
+      if (score >= 10) {
         envelope.classList.add('show');
         openBtn.onclick = () => {
           envelope.classList.toggle('open');
