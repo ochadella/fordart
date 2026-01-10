@@ -1,275 +1,223 @@
+bisa ga game ini diganti tema spongeboob patrick?
+
+
 <!doctype html>
 <html lang="id">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mini Game Bikini Bottom</title>
+  <title>Mini Game For babu</title>
   <style>
-    :root{
-      --sea1:#0bb9ff;
-      --sea2:#0176d8;
-      --sea3:#003f9b;
-
-      --sponge:#ffd51a;     /* kuning */
-      --patrick:#ff5aa5;    /* pink */
-      --coral:#ff7b4a;      /* coral */
-      --sand:#ffe7b1;       /* pasir */
-      --ink:#0b1b2b;
-      --paper:#ffffff;
-
-      --card:#ffffff;
-      --shadow: 0 14px 35px rgba(0,0,0,.18);
+    :root {
+      --bg: #ffffff;
+      --accent: #102f76;
+      --accent-2: #f9a01b;
+      --paper: #fefefe;
+      --choco: #5b3a29; /* warna coklat */
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    body {
+      background: linear-gradient(180deg, #ffffff 0%, #dce3f3 40%, #102f76 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+    .stage {
+      width: 100%;
+      max-width: 850px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      overflow: hidden;
+      position: relative;
+      padding-bottom: 90px;
+    }
+    header {
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(90deg, var(--accent) 0%, #142a46 100%);
+      color: #fff;
+    }
+    h1 {
+      font-size: 17px;
+      margin: 0;
+    }
+    .help {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+    .game-area {
+      position: relative;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .playground {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .scoreboard {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: rgba(255,255,255,0.8);
+      padding: 8px 12px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: #102f76;
+    }
+    .scoreboard .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
     }
 
-    html,body{height:100%;margin:0;font-family:"Inter",system-ui,sans-serif;}
-    body{
-      background:
-        radial-gradient(circle at 15% 20%, rgba(255,255,255,.35), transparent 35%),
-        radial-gradient(circle at 70% 15%, rgba(255,255,255,.25), transparent 40%),
-        radial-gradient(circle at 50% 55%, rgba(255,255,255,.15), transparent 55%),
-        linear-gradient(180deg, var(--sea1) 0%, var(--sea2) 45%, var(--sea3) 100%);
-      display:flex;align-items:center;justify-content:center;padding:10px;
-      overflow:hidden;
-    }
-
-    /* gelembung background */
-    .bubbles{
-      position:fixed;inset:0;pointer-events:none;opacity:.35;
-      background:
-        radial-gradient(circle at 10% 30%, rgba(255,255,255,.35) 0 6px, transparent 7px),
-        radial-gradient(circle at 35% 60%, rgba(255,255,255,.25) 0 10px, transparent 11px),
-        radial-gradient(circle at 70% 40%, rgba(255,255,255,.28) 0 7px, transparent 8px),
-        radial-gradient(circle at 85% 20%, rgba(255,255,255,.22) 0 12px, transparent 13px),
-        radial-gradient(circle at 55% 85%, rgba(255,255,255,.18) 0 9px, transparent 10px);
-      filter: blur(.2px);
-    }
-
-    .stage{
-      width:100%;
-      max-width:900px;
-      background: rgba(255,255,255,.92);
-      border-radius:18px;
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-      padding-bottom:90px;
-      border: 3px solid rgba(255,255,255,.55);
-      backdrop-filter: blur(6px);
-    }
-
-    header{
-      padding:16px 22px;
-      display:flex;align-items:center;justify-content:space-between;
-      background:
-        linear-gradient(90deg, var(--sponge) 0%, #ffe76a 35%, var(--patrick) 100%);
-      color: var(--ink);
-      border-bottom: 3px solid rgba(0,0,0,.08);
-    }
-    h1{font-size:17px;margin:0;font-weight:800;letter-spacing:.2px;}
-    .help{font-size:13px;opacity:.9;font-weight:600;}
-    .tag{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:6px 10px;border-radius:999px;
-      background: rgba(255,255,255,.65);
-      border: 1px solid rgba(0,0,0,.06);
-      font-size:12px;font-weight:700;
-    }
-
-    .game-area{
-      position:relative;
-      height:420px;
-      display:flex;align-items:center;justify-content:center;flex-direction:column;
-      background:
-        linear-gradient(180deg, rgba(255,231,177,.55) 0%, rgba(255,231,177,.15) 18%, transparent 55%),
-        radial-gradient(circle at 25% 30%, rgba(255,255,255,.25), transparent 45%),
-        radial-gradient(circle at 70% 50%, rgba(255,255,255,.18), transparent 55%);
-    }
-
-    .playground{
-      width:100%;
-      height:100%;
-      position:relative;
-      overflow:hidden;
-    }
-
-    /* Karang & pasir bawah (dekor) */
-    .reef{
-      position:absolute;left:0;right:0;bottom:0;height:85px;
-      background:
-        radial-gradient(circle at 10% 100%, rgba(255,123,74,.55) 0 45px, transparent 46px),
-        radial-gradient(circle at 25% 100%, rgba(255,90,165,.45) 0 55px, transparent 56px),
-        radial-gradient(circle at 45% 100%, rgba(255,123,74,.45) 0 40px, transparent 41px),
-        radial-gradient(circle at 65% 100%, rgba(255,90,165,.40) 0 60px, transparent 61px),
-        radial-gradient(circle at 85% 100%, rgba(255,123,74,.40) 0 42px, transparent 43px),
-        linear-gradient(180deg, transparent 0%, rgba(255,231,177,.85) 55%, rgba(255,231,177,.95) 100%);
-      pointer-events:none;
-    }
-
-    .scoreboard{
-      position:absolute;
-      top:15px;left:15px;
-      background: rgba(255,255,255,.85);
-      padding:8px 12px;border-radius:999px;
-      display:flex;align-items:center;gap:10px;
-      font-weight:800;color: var(--ink);
-      border: 1px solid rgba(0,0,0,.08);
-      box-shadow: 0 8px 18px rgba(0,0,0,.10);
-    }
-    .scoreboard .dot{
-      width:10px;height:10px;border-radius:50%;
-      background: linear-gradient(180deg, var(--patrick), #ff86bf);
-    }
-    .timer-pill{
-      margin-left:4px;
-      background: rgba(11,185,255,.15);
-      border:1px solid rgba(1,118,216,.18);
-      padding:4px 9px;border-radius:999px;
-      font-size:12px;font-weight:900;
-    }
-
-    /* ITEM (Patrick star / Sponge emoji) */
-    .item{
-      position:absolute;
-      width:54px;height:54px;
-      cursor:pointer;
-      display:flex;align-items:center;justify-content:center;
-      user-select:none;
+    /* COKLAT (pengganti heart) */
+    .choco {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
       transform: translateZ(0);
-      animation: pop .15s ease-out;
     }
-    @keyframes pop{
-      from{transform: scale(.85); opacity:.3;}
-      to{transform: scale(1); opacity:1;}
+    .choco span {
+      font-size: 40px;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.18));
+      transform: rotate(-8deg);
     }
-    .item span{
-      font-size:44px;
-      filter: drop-shadow(0 5px 10px rgba(0,0,0,.18));
+    .choco:active span {
+      transform: rotate(-8deg) scale(0.92);
     }
-    .item:active span{transform: scale(.92);}
 
-    /* Amplop jadi "Kerang" (clam) */
-    .clam{
-      position:absolute;
-      top:50%;left:50%;
-      transform: translate(-50%,-50%) scale(0);
-      width:340px;height:240px;
-      border-radius:16px;
-      background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,231,177,.75));
-      box-shadow: 0 10px 24px rgba(0,0,0,.22);
-      cursor:pointer;
-      display:flex;align-items:center;justify-content:center;flex-direction:column;
+    /* Amplop */
+    .envelope {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 320px;
+      height: 220px;
+      background: #fffef8;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
       transition: transform .6s ease;
-      overflow:hidden;
-      border: 2px solid rgba(0,0,0,.06);
     }
-    .clam.show{transform: translate(-50%,-50%) scale(1);}
-    .clam .lid{
-      position:absolute;top:0;left:0;right:0;height:110px;
-      background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,231,177,.65));
+    .envelope.show { transform: translate(-50%, -50%) scale(1); }
+    .envelope .flap {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 100px;
+      background: #fffcea;
       clip-path: polygon(0 0, 50% 100%, 100% 0);
       transition: transform .6s ease;
       transform-origin: top;
     }
-    .clam.open .lid{transform: rotateX(180deg);}
-
-    .open-btn{
-      font-size:40px;
-      z-index:2;
-      filter: drop-shadow(0 5px 12px rgba(0,0,0,.18));
+    .envelope.open .flap {
+      transform: rotateX(180deg);
+    }
+    .heart-btn {
+      font-size: 36px;
+      color: var(--choco);
+      z-index: 2;
     }
 
     /* Surat */
-    .letter{
-      position:absolute;
-      top:100%;left:50%;
+    .letter {
+      position: absolute;
+      top: 100%;
+      left: 50%;
       transform: translateX(-50%);
-      width:90%;max-width:420px;
+      width: 90%;
+      max-width: 400px;
       background: var(--paper);
-      border-radius:12px;
-      box-shadow: 0 10px 22px rgba(0,0,0,.18);
-      opacity:0;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      opacity: 0;
       transition: all .6s ease;
-      padding:18px;
+      padding: 18px;
       text-align: justify;
-      line-height:1.55em;
-      font-size:14px;
-      max-height:310px;
-      overflow-y:auto;
-      border: 1px solid rgba(0,0,0,.06);
+      line-height: 1.5em;
+      font-size: 14px;
+      max-height: 300px;
+      overflow-y: auto;
     }
-    .clam.open .letter{top:-128px;opacity:1;}
-
-    .letter h3{
-      margin:0 0 10px 0;
-      font-size:16px;
-      text-align:center;
-      background: linear-gradient(90deg, var(--sponge), var(--patrick));
-      -webkit-background-clip: text;
-      background-clip:text;
-      color:transparent;
-      font-weight:900;
-      letter-spacing:.3px;
+    .envelope.open .letter {
+      top: -120px;
+      opacity: 1;
     }
 
-    footer{
-      position:absolute;bottom:0;width:100%;
-      text-align:center;
-      font-size:13px;
-      padding:10px;
-      background: rgba(255,255,255,.85);
-      color: var(--ink);
-      border-top: 1px solid rgba(0,0,0,.06);
+    footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 13px;
+      padding: 10px;
+      background: #f8f9fa;
+      color: #102f76;
     }
 
-    /* Responsive */
-    @media (max-width:768px){
-      .stage{max-width:95%;}
-      .game-area{height:360px;}
-      .letter{font-size:13px;padding:14px;max-height:250px;}
-      header h1{font-size:15px;}
-      .help{font-size:12px;}
-      .item{width:50px;height:50px;}
-      .item span{font-size:40px;}
+    /* Responsive fix */
+    @media (max-width: 768px) {
+      .stage { max-width: 95%; }
+      .game-area { height: 340px; }
+      .letter { font-size: 13px; padding: 14px; max-height: 240px; }
+      header h1 { font-size: 15px; }
+      .help { font-size: 12px; }
     }
-    @media (max-width:480px){
-      .letter{font-size:12px;padding:12px;max-height:220px;}
-      .clam{width:92%;height:215px;}
-      .stage{padding-bottom:70px;}
+
+    @media (max-width: 480px) {
+      .letter { font-size: 12px; padding: 12px; max-height: 210px; }
+      .envelope { width: 90%; height: 200px; }
+      .stage { padding-bottom: 70px; }
     }
   </style>
 </head>
-
 <body>
-  <div class="bubbles"></div>
-
   <div class="stage">
     <header>
-      <div style="display:flex;align-items:center;gap:10px;">
-        <h1>Mini Game Bikini Bottom</h1>
-        <span class="tag">🧽 + ⭐ vibes</span>
-      </div>
-      <span class="help">Kumpulkan bintang Patrick untuk membuka kerang</span>
+      <h1>Mini Game For Babu</h1>
+      <span class="help">Kumpulkan coklat untuk membuka surat</span>
     </header>
 
     <div class="game-area">
-      <div class="playground" id="playground">
-        <div class="reef"></div>
-      </div>
-
+      <div class="playground" id="playground"></div>
       <div class="scoreboard">
-        <div class="dot"></div>
-        <span id="score">0</span> / 10
-        <span class="timer-pill">⏳ <span id="timer">25</span>s</span>
+        <div class="dot"></div><span id="score">0</span> / 10
+        <span class="timer" id="timer">25</span>
       </div>
     </div>
 
-    <!-- Kerang -->
-    <div class="clam" id="clam">
-      <div class="lid"></div>
-      <div class="open-btn" id="openBtn">🐚</div>
-
+    <!-- Amplop -->
+    <div class="envelope" id="envelope">
+      <div class="flap"></div>
+      <div class="heart-btn" id="openBtn">🍫</div>
       <div class="letter" id="letter">
-        <h3>🧽⭐ FROM AKU ⭐🧽</h3>
+        <h3>✨ FROM AKU ✨</h3>
         <p>Semangat Babuu, Babu tidaks sendirian ougheeeyyyy, Sumpa bu awm lek badmood ketoro bngt dan medeni</p>
         <p>HIIII NGERYYYYYYYY</p>
         <p>GO BABU GO BABU GO BABU GOOOOOO SEMANGATTT, SEMANGATTT</p>
@@ -277,7 +225,7 @@
     </div>
 
     <footer>
-      Klik ⭐ yang muncul sebelum waktunya habis!
+      Klik coklat yang muncul sebelum waktunya habis!
     </footer>
   </div>
 
@@ -287,7 +235,7 @@
     const playground = document.getElementById('playground');
     const scoreEl = document.getElementById('score');
     const timerEl = document.getElementById('timer');
-    const clam = document.getElementById('clam');
+    const envelope = document.getElementById('envelope');
     const openBtn = document.getElementById('openBtn');
     const bgm = document.getElementById('bgm');
 
@@ -295,36 +243,27 @@
     let timeLeft = 25;
     let gameInterval, timerInterval;
 
-    // item yang muncul: dominan Patrick star ⭐, kadang sponge 🧽 biar lucu
-    function randomEmoji(){
-      return Math.random() < 0.8 ? "⭐" : "🧽";
-    }
+    function spawnChoco() {
+      const choco = document.createElement('div');
+      choco.className = 'choco';
+      choco.innerHTML = `<span aria-label="coklat">🍫</span>`;
 
-    function spawnItem() {
-      const item = document.createElement('div');
-      item.className = 'item';
-      item.innerHTML = `<span aria-label="item">${randomEmoji()}</span>`;
+      choco.style.left = Math.random() * (playground.clientWidth - 50) + 'px';
+      choco.style.top  = Math.random() * (playground.clientHeight - 50) + 'px';
 
-      const pad = 10;
-      const w = 54, h = 54;
-      const maxX = Math.max(0, playground.clientWidth - w - pad);
-      const maxY = Math.max(0, playground.clientHeight - h - 90); // biar ga nutup reef bawah
-      item.style.left = (pad + Math.random() * maxX) + 'px';
-      item.style.top  = (pad + Math.random() * maxY) + 'px';
-
-      item.onclick = () => {
+      choco.onclick = () => {
         score++;
         scoreEl.textContent = score;
-        item.remove();
+        choco.remove();
         if (score >= 10) endGame();
       };
 
-      playground.appendChild(item);
-      setTimeout(() => item.remove(), 1500);
+      playground.appendChild(choco);
+      setTimeout(() => choco.remove(), 1500);
     }
 
     function startGame() {
-      gameInterval = setInterval(spawnItem, 800);
+      gameInterval = setInterval(spawnChoco, 800);
       timerInterval = setInterval(() => {
         timeLeft--;
         timerEl.textContent = timeLeft;
@@ -335,18 +274,16 @@
     function endGame() {
       clearInterval(gameInterval);
       clearInterval(timerInterval);
-
-      // hapus item yang tersisa tapi tetap sisakan reef
-      [...playground.querySelectorAll('.item')].forEach(el => el.remove());
+      playground.innerHTML = '';
 
       if (score >= 10) {
-        clam.classList.add('show');
+        envelope.classList.add('show');
         openBtn.onclick = () => {
-          clam.classList.toggle('open');
+          envelope.classList.toggle('open');
           bgm.play();
         };
       } else {
-        alert('Yah belum cukup bintangnya 😭 coba lagi ya!');
+        alert('Sayang sekali, coba lagi ya!');
         location.reload();
       }
     }
