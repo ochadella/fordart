@@ -130,11 +130,16 @@
       transition:.6s ease;
       z-index:5;
       border:2px solid rgba(0,0,0,.06);
-      overflow:hidden;
+      overflow:hidden; /* tetap */
     }
 
     .clam.show{
       transform:translate(-50%,-50%) scale(1);
+    }
+
+    /* ✅ FIX: saat open, biar surat & gambar ga ke-clip */
+    .clam.open{
+      overflow:visible;
     }
 
     /* flap amplop (tetap .lid, tapi bentuk & warna amplop) */
@@ -218,20 +223,19 @@
     /* ===== MASCOTS (muncul di samping surat) ===== */
     .mascot{
       position:absolute;
-      top:-105px;              /* ngikut surat yang naik */
+      top:-105px;
       width:90px;
       height:auto;
       opacity:0;
       transform:translateY(10px) scale(.98);
       transition:.6s ease;
-      z-index:2;               /* di belakang surat biar ga nutup teks */
+      z-index:2;
       pointer-events:none;
       filter: drop-shadow(0 14px 22px rgba(0,0,0,.22));
     }
     .mascot.left{ left:-70px; }
     .mascot.right{ right:-70px; }
 
-    /* pas dibuka -> mascots muncul */
     .clam.open .mascot{
       opacity:1;
       transform:translateY(0) scale(1);
@@ -253,7 +257,6 @@
       .letter{font-size:12px;}
       header h1{font-size:15px;}
 
-      /* biar gambar ga kepotong parah di hp */
       .mascot.left{ left:-30px; width:70px; }
       .mascot.right{ right:-30px; width:70px; }
     }
@@ -280,7 +283,7 @@
       <div class="lid"></div>
       <div class="open-btn" id="openBtn">🐚</div>
 
-      <!-- mascots: file sudah ada di repo -->
+      <!-- gambar: file kamu -->
       <img class="mascot left" src="sponge.png" alt="Sponge">
       <img class="mascot right" src="patrick.png" alt="Patrick">
 
