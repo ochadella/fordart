@@ -3,284 +3,296 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mini Game For babu</title>
+  <title>Mini Game Bikini Bottom</title>
+
   <style>
-    :root {
-      --bg: #ffffff;
-      --accent: #102f76;
-      --accent-2: #f9a01b;
-      --paper: #fefefe;
-      --choco: #5b3a29; /* warna coklat */
-    }
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    body {
-      background: linear-gradient(180deg, #ffffff 0%, #dce3f3 40%, #102f76 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px;
-    }
-    .stage {
-      width: 100%;
-      max-width: 850px;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-      overflow: hidden;
-      position: relative;
-      padding-bottom: 90px;
-    }
-    header {
-      padding: 16px 22px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: linear-gradient(90deg, var(--accent) 0%, #142a46 100%);
-      color: #fff;
-    }
-    h1 {
-      font-size: 17px;
-      margin: 0;
-    }
-    .help {
-      font-size: 13px;
-      opacity: 0.9;
-    }
-    .game-area {
-      position: relative;
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-    .playground {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      overflow: hidden;
-    }
-    .scoreboard {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      background: rgba(255,255,255,0.8);
-      padding: 8px 12px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 600;
-      color: #102f76;
-    }
-    .scoreboard .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--accent);
+    :root{
+      --sea1:#5cc9ff;
+      --sea2:#1aa3ff;
+      --sea3:#0047ab;
+
+      --sponge:#ffd51a;
+      --patrick:#ff5aa5;
+      --sand:#ffe7b1;
+      --ink:#0b1b2b;
     }
 
-    /* COKLAT (pengganti heart) */
-    .choco {
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      user-select: none;
-      transform: translateZ(0);
-    }
-    .choco span {
-      font-size: 40px;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.18));
-      transform: rotate(-8deg);
-    }
-    .choco:active span {
-      transform: rotate(-8deg) scale(0.92);
+    html,body{
+      height:100%;
+      margin:0;
+      font-family:"Inter",system-ui,sans-serif;
     }
 
-    /* Amplop */
-    .envelope {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      width: 320px;
-      height: 220px;
-      background: #fffef8;
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      transition: transform .6s ease;
-    }
-    .envelope.show { transform: translate(-50%, -50%) scale(1); }
-    .envelope .flap {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 100px;
-      background: #fffcea;
-      clip-path: polygon(0 0, 50% 100%, 100% 0);
-      transition: transform .6s ease;
-      transform-origin: top;
-    }
-    .envelope.open .flap {
-      transform: rotateX(180deg);
-    }
-    .heart-btn {
-      font-size: 36px;
-      color: var(--choco);
-      z-index: 2;
+    body{
+      background:linear-gradient(180deg,var(--sea1),var(--sea2),var(--sea3));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px;
     }
 
-    /* Surat */
-    .letter {
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      max-width: 400px;
-      background: var(--paper);
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      opacity: 0;
-      transition: all .6s ease;
-      padding: 18px;
-      text-align: justify;
-      line-height: 1.5em;
-      font-size: 14px;
-      max-height: 300px;
-      overflow-y: auto;
-    }
-    .envelope.open .letter {
-      top: -120px;
-      opacity: 1;
+    /* ===== STAGE ===== */
+    .stage{
+      width:100%;
+      max-width:900px;
+      background:#fff;
+      border-radius:20px;
+      box-shadow:0 15px 40px rgba(0,0,0,.25);
+      overflow:hidden;
+      position:relative;
+      padding-bottom:80px;
     }
 
-    footer {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      text-align: center;
-      font-size: 13px;
-      padding: 10px;
-      background: #f8f9fa;
-      color: #102f76;
+    /* ===== HEADER ===== */
+    header{
+      padding:16px 22px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:linear-gradient(90deg,var(--sponge),#ffe76a,var(--patrick));
+      font-weight:800;
+      color:var(--ink);
     }
 
-    /* Responsive fix */
-    @media (max-width: 768px) {
-      .stage { max-width: 95%; }
-      .game-area { height: 340px; }
-      .letter { font-size: 13px; padding: 14px; max-height: 240px; }
-      header h1 { font-size: 15px; }
-      .help { font-size: 12px; }
+    header h1{
+      font-size:17px;
+      margin:0;
     }
 
-    @media (max-width: 480px) {
-      .letter { font-size: 12px; padding: 12px; max-height: 210px; }
-      .envelope { width: 90%; height: 200px; }
-      .stage { padding-bottom: 70px; }
+    .help{
+      font-size:13px;
+    }
+
+    /* ===== GAME AREA ===== */
+    .game-area{
+      position:relative;
+      height:480px; /* FIX UTAMA */
+      background:linear-gradient(180deg,#fff,var(--sand));
+    }
+
+    .playground{
+      width:100%;
+      height:100%;
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* ===== SCORE ===== */
+    .scoreboard{
+      position:absolute;
+      top:15px;
+      left:15px;
+      background:rgba(255,255,255,.9);
+      padding:8px 14px;
+      border-radius:999px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      font-weight:800;
+      box-shadow:0 8px 20px rgba(0,0,0,.15);
+    }
+
+    /* ===== ITEM ===== */
+    .item{
+      position:absolute;
+      width:54px;
+      height:54px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+    }
+
+    .item span{
+      font-size:44px;
+      filter:drop-shadow(0 5px 8px rgba(0,0,0,.2));
+    }
+
+    /* ===== CLAM (KERANG) ===== */
+    .clam{
+      position:absolute;
+      top:52%;
+      left:50%;
+      transform:translate(-50%,-50%) scale(0);
+      width:340px;
+      height:240px;
+      background:#fff;
+      border-radius:16px;
+      box-shadow:0 10px 30px rgba(0,0,0,.3);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      transition:.6s ease;
+      z-index:5;
+    }
+
+    .clam.show{
+      transform:translate(-50%,-50%) scale(1);
+    }
+
+    .clam .lid{
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:110px;
+      background:#fff;
+      clip-path:polygon(0 0,50% 100%,100% 0);
+      transform-origin:top;
+      transition:.6s ease;
+    }
+
+    .clam.open .lid{
+      transform:rotateX(180deg);
+    }
+
+    .open-btn{
+      font-size:40px;
+      cursor:pointer;
+      z-index:2;
+    }
+
+    /* ===== LETTER ===== */
+    .letter{
+      position:absolute;
+      top:100%;
+      left:50%;
+      transform:translateX(-50%);
+      width:90%;
+      max-width:420px;
+      background:#fff;
+      border-radius:14px;
+      box-shadow:0 8px 20px rgba(0,0,0,.25);
+      opacity:0;
+      transition:.6s ease;
+      padding:18px;
+      line-height:1.6em;
+      max-height:360px; /* FIX */
+      overflow-y:auto;
+    }
+
+    .clam.open .letter{
+      top:-90px;  /* FIX UTAMA */
+      opacity:1;
+    }
+
+    .letter h3{
+      text-align:center;
+      margin-top:0;
+      font-size:16px;
+      background:linear-gradient(90deg,var(--sponge),var(--patrick));
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+
+    footer{
+      position:absolute;
+      bottom:0;
+      width:100%;
+      padding:10px;
+      text-align:center;
+      background:#f5f5f5;
+      font-size:13px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:480px){
+      .game-area{height:520px;}
+      .letter{font-size:12px;}
+      header h1{font-size:15px;}
     }
   </style>
 </head>
+
 <body>
   <div class="stage">
     <header>
-      <h1>Mini Game For Babu</h1>
-      <span class="help">Kumpulkan coklat untuk membuka surat</span>
+      <h1>Mini Game Bikini Bottom 🧽⭐</h1>
+      <span class="help">Kumpulkan ⭐ Patrick</span>
     </header>
 
     <div class="game-area">
       <div class="playground" id="playground"></div>
+
       <div class="scoreboard">
-        <div class="dot"></div><span id="score">0</span> / 10
-        <span class="timer" id="timer">25</span>
+        ⭐ <span id="score">0</span>/10 ⏳ <span id="timer">25</span>s
       </div>
     </div>
 
-    <!-- Amplop -->
-    <div class="envelope" id="envelope">
-      <div class="flap"></div>
-      <div class="heart-btn" id="openBtn">🍫</div>
-      <div class="letter" id="letter">
-        <h3>✨ FROM AKU ✨</h3>
-        <p>Semangat Babuu, Babu tidaks sendirian ougheeeyyyy, Sumpa bu awm lek badmood ketoro bngt dan medeni</p>
-        <p>HIIII NGERYYYYYYYY</p>
-        <p>GO BABU GO BABU GO BABU GOOOOOO SEMANGATTT, SEMANGATTT</p>
+    <!-- CLAM -->
+    <div class="clam" id="clam">
+      <div class="lid"></div>
+      <div class="open-btn" id="openBtn">🐚</div>
+
+      <div class="letter">
+        <h3>🧽⭐ FROM AKU ⭐🧽</h3>
+        <p>HIIII NGERYYYYYYYY 😭</p>
+        <p>GO BABU GO BABU GO BABU GOOOOOO</p>
+        <p>SEMANGATTTT SEMANGATTTT 💪🔥</p>
+        <p>Babu tidak sendirian yaaaa, Patrick & Sponge selalu nemenin 🍍⭐</p>
       </div>
     </div>
 
     <footer>
-      Klik coklat yang muncul sebelum waktunya habis!
+      Klik ⭐ yang muncul sebelum waktunya habis!
     </footer>
   </div>
 
   <audio id="bgm" src="aldi.mp3"></audio>
 
   <script>
-    const playground = document.getElementById('playground');
-    const scoreEl = document.getElementById('score');
-    const timerEl = document.getElementById('timer');
-    const envelope = document.getElementById('envelope');
-    const openBtn = document.getElementById('openBtn');
-    const bgm = document.getElementById('bgm');
+    const playground=document.getElementById('playground');
+    const scoreEl=document.getElementById('score');
+    const timerEl=document.getElementById('timer');
+    const clam=document.getElementById('clam');
+    const openBtn=document.getElementById('openBtn');
+    const bgm=document.getElementById('bgm');
 
-    let score = 0;
-    let timeLeft = 25;
-    let gameInterval, timerInterval;
+    let score=0;
+    let timeLeft=25;
+    let gameInterval,timerInterval;
 
-    function spawnChoco() {
-      const choco = document.createElement('div');
-      choco.className = 'choco';
-      choco.innerHTML = `<span aria-label="coklat">🍫</span>`;
+    function spawnItem(){
+      const item=document.createElement('div');
+      item.className='item';
+      item.innerHTML='<span>⭐</span>';
 
-      choco.style.left = Math.random() * (playground.clientWidth - 50) + 'px';
-      choco.style.top  = Math.random() * (playground.clientHeight - 50) + 'px';
+      item.style.left=Math.random()*(playground.clientWidth-60)+'px';
+      item.style.top=Math.random()*(playground.clientHeight-120)+'px';
 
-      choco.onclick = () => {
+      item.onclick=()=>{
         score++;
-        scoreEl.textContent = score;
-        choco.remove();
-        if (score >= 10) endGame();
+        scoreEl.textContent=score;
+        item.remove();
+        if(score>=10) endGame();
       };
 
-      playground.appendChild(choco);
-      setTimeout(() => choco.remove(), 1500);
+      playground.appendChild(item);
+      setTimeout(()=>item.remove(),1500);
     }
 
-    function startGame() {
-      gameInterval = setInterval(spawnChoco, 800);
-      timerInterval = setInterval(() => {
+    function startGame(){
+      gameInterval=setInterval(spawnItem,800);
+      timerInterval=setInterval(()=>{
         timeLeft--;
-        timerEl.textContent = timeLeft;
-        if (timeLeft <= 0) endGame();
-      }, 1000);
+        timerEl.textContent=timeLeft;
+        if(timeLeft<=0) endGame();
+      },1000);
     }
 
-    function endGame() {
+    function endGame(){
       clearInterval(gameInterval);
       clearInterval(timerInterval);
-      playground.innerHTML = '';
-
-      if (score >= 10) {
-        envelope.classList.add('show');
-        openBtn.onclick = () => {
-          envelope.classList.toggle('open');
+      playground.innerHTML='';
+      if(score>=10){
+        clam.classList.add('show');
+        openBtn.onclick=()=>{
+          clam.classList.toggle('open');
           bgm.play();
         };
-      } else {
-        alert('Sayang sekali, coba lagi ya!');
+      }else{
+        alert('Belum cukup bintang 😭 coba lagi ya!');
         location.reload();
       }
     }
